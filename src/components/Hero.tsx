@@ -23,9 +23,9 @@ const Hero = () => {
           {/* Profile Picture */}
           <div className="mb-8 animate-scale-in">
             <div className="relative inline-block">
-              <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 p-1 shadow-2xl">
+              <div className="w-40 h-40 md:w-48 md:h-48 mx-auto rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 p-1 shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" 
+                  src="/lovable-uploads/e1242a0e-df49-420b-9820-2f0abbefffa3.png" 
                   alt="30plusfreelancer - CTO & DevOps Professional" 
                   className="w-full h-full rounded-full object-cover bg-white"
                 />
@@ -38,17 +38,17 @@ const Hero = () => {
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in">
             <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent">
-              Transforming Ideas into
+              Build Big Without
             </span>
             <br />
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent animate-pulse">
-              Scalable Solutions
+              Getting Billed Big
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in delay-300">
             With over a decade of experience, I help startups and enterprises build robust, 
-            scalable technology infrastructures that drive business growth.
+            scalable technology infrastructures that drive business growth - all while keeping costs optimized.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fade-in delay-500">
