@@ -38,7 +38,7 @@ const ContactForm = () => {
     console.log('Form submitted:', formData);
     
     toast({
-      title: "Message sent successfully!",
+      title: "Message sent successfully! 🚀",
       description: "I'll get back to you within 24 hours.",
     });
 
@@ -59,26 +59,29 @@ const ContactForm = () => {
   };
 
   return (
-    <Card className="max-w-2xl mx-auto bg-white shadow-2xl border-0">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl text-gray-900">Start Your Project</CardTitle>
+    <Card className="max-w-2xl mx-auto bg-white/95 backdrop-blur-lg shadow-2xl border-0 hover:shadow-3xl transition-all duration-300">
+      <CardHeader className="text-center bg-gradient-to-r from-blue-50 to-indigo-50 rounded-t-lg">
+        <CardTitle className="text-2xl text-gray-900 flex items-center justify-center gap-2">
+          🎯 Start Your Project
+        </CardTitle>
         <p className="text-gray-600">Tell me about your project and let's discuss how I can help.</p>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-6 p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Name *</Label>
+              <Label htmlFor="name" className="text-gray-700 font-medium">Name *</Label>
               <Input
                 id="name"
                 value={formData.name}
                 onChange={(e) => handleChange('name', e.target.value)}
                 placeholder="Your full name"
                 required
+                className="border-2 border-gray-200 focus:border-blue-500 transition-colors"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Email *</Label>
+              <Label htmlFor="email" className="text-gray-700 font-medium">Email *</Label>
               <Input
                 id="email"
                 type="email"
@@ -86,73 +89,75 @@ const ContactForm = () => {
                 onChange={(e) => handleChange('email', e.target.value)}
                 placeholder="your.email@company.com"
                 required
+                className="border-2 border-gray-200 focus:border-blue-500 transition-colors"
               />
             </div>
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="company">Company</Label>
+            <Label htmlFor="company" className="text-gray-700 font-medium">Company</Label>
             <Input
               id="company"
               value={formData.company}
               onChange={(e) => handleChange('company', e.target.value)}
               placeholder="Your company name"
+              className="border-2 border-gray-200 focus:border-blue-500 transition-colors"
             />
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="projectType">Project Type</Label>
+              <Label htmlFor="projectType" className="text-gray-700 font-medium">Project Type</Label>
               <Select onValueChange={(value) => handleChange('projectType', value)}>
-                <SelectTrigger>
+                <SelectTrigger className="border-2 border-gray-200 focus:border-blue-500 transition-colors">
                   <SelectValue placeholder="Select project type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="cloud-migration">Cloud Migration</SelectItem>
-                  <SelectItem value="devops-setup">DevOps Setup</SelectItem>
-                  <SelectItem value="infrastructure-audit">Infrastructure Audit</SelectItem>
-                  <SelectItem value="scaling-optimization">Scaling & Optimization</SelectItem>
-                  <SelectItem value="security-compliance">Security & Compliance</SelectItem>
-                  <SelectItem value="architecture-design">Architecture Design</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
+                  <SelectItem value="cloud-migration">☁️ Cloud Migration</SelectItem>
+                  <SelectItem value="devops-setup">⚙️ DevOps Setup</SelectItem>
+                  <SelectItem value="infrastructure-audit">🔍 Infrastructure Audit</SelectItem>
+                  <SelectItem value="scaling-optimization">📈 Scaling & Optimization</SelectItem>
+                  <SelectItem value="security-compliance">🔒 Security & Compliance</SelectItem>
+                  <SelectItem value="architecture-design">🏗️ Architecture Design</SelectItem>
+                  <SelectItem value="other">🔧 Other</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="timeline">Timeline</Label>
+              <Label htmlFor="timeline" className="text-gray-700 font-medium">Timeline</Label>
               <Select onValueChange={(value) => handleChange('timeline', value)}>
-                <SelectTrigger>
+                <SelectTrigger className="border-2 border-gray-200 focus:border-blue-500 transition-colors">
                   <SelectValue placeholder="Project timeline" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="asap">ASAP</SelectItem>
-                  <SelectItem value="1-month">Within 1 month</SelectItem>
-                  <SelectItem value="3-months">1-3 months</SelectItem>
-                  <SelectItem value="6-months">3-6 months</SelectItem>
-                  <SelectItem value="ongoing">Ongoing project</SelectItem>
+                  <SelectItem value="asap">⚡ ASAP</SelectItem>
+                  <SelectItem value="1-month">📅 Within 1 month</SelectItem>
+                  <SelectItem value="3-months">📊 1-3 months</SelectItem>
+                  <SelectItem value="6-months">📈 3-6 months</SelectItem>
+                  <SelectItem value="ongoing">🔄 Ongoing project</SelectItem>
                 </SelectContent>
               </Select>
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="budget">Budget Range</Label>
+            <Label htmlFor="budget" className="text-gray-700 font-medium">Budget Range</Label>
             <Select onValueChange={(value) => handleChange('budget', value)}>
-              <SelectTrigger>
+              <SelectTrigger className="border-2 border-gray-200 focus:border-blue-500 transition-colors">
                 <SelectValue placeholder="Select budget range" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="5-10k">$5k - $10k</SelectItem>
-                <SelectItem value="10-25k">$10k - $25k</SelectItem>
-                <SelectItem value="25-50k">$25k - $50k</SelectItem>
-                <SelectItem value="50k+">$50k+</SelectItem>
-                <SelectItem value="discuss">Let's discuss</SelectItem>
+                <SelectItem value="5-10k">💰 $5k - $10k</SelectItem>
+                <SelectItem value="10-25k">💵 $10k - $25k</SelectItem>
+                <SelectItem value="25-50k">💸 $25k - $50k</SelectItem>
+                <SelectItem value="50k+">💎 $50k+</SelectItem>
+                <SelectItem value="discuss">💬 Let's discuss</SelectItem>
               </SelectContent>
             </Select>
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="message">Project Description *</Label>
+            <Label htmlFor="message" className="text-gray-700 font-medium">Project Description *</Label>
             <Textarea
               id="message"
               value={formData.message}
@@ -160,11 +165,12 @@ const ContactForm = () => {
               placeholder="Tell me about your project, current challenges, and what you're looking to achieve..."
               rows={6}
               required
+              className="border-2 border-gray-200 focus:border-blue-500 transition-colors resize-none"
             />
           </div>
           
-          <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-lg py-3">
-            Send Message
+          <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-lg py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            Send Message 🚀
           </Button>
         </form>
       </CardContent>
