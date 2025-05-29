@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -49,7 +48,7 @@ const Index = () => {
             
             <div className="flex items-center space-x-4">
               <Button variant="outline" size="sm" asChild className="hover:scale-105 transition-transform duration-300 hover:shadow-lg">
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <a href="https://www.linkedin.com/in/joel-andriyas-ai-first-developer-937928a4/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   <Linkedin className="w-4 h-4" />
                   <span className="hidden sm:inline">LinkedIn</span>
                 </a>
@@ -129,7 +128,7 @@ const Index = () => {
             </div>
             <p className="text-gray-300 mb-6">Freelance CTO & DevOps Professional</p>
             <div className="flex justify-center space-x-6 mb-8">
-              <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" 
+              <a href="https://www.linkedin.com/in/joel-andriyas-ai-first-developer-937928a4/" target="_blank" rel="noopener noreferrer" 
                  className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-125 hover:rotate-12">
                 <Linkedin className="w-6 h-6" />
               </a>
