@@ -66,6 +66,25 @@ ${formData.message}`
         return;
       }
 
+      // Send email via edge function
+      const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          projectType: formData.projectType,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          message: formData.message
+        }
+      });
+
+      if (emailError) {
+        console.error('Error sending email:', emailError);
+        // Still show success since the form was saved, but log the email error
+        console.warn('Contact form saved but email notification failed');
+      }
+
       toast({
         title: "Message sent successfully! 🚀",
         description: "I'll get back to you within 24 hours.",
