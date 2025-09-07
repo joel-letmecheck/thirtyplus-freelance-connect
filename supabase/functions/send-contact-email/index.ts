@@ -2,12 +2,32 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+const resend = new Resend(((globalThis as any).Deno?.env.get("RESEND_API_KEY")) || "");
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+// Configure CORS using an allowlist from environment. Example:
+// ALLOWED_ORIGINS="https://app.example.com,https://www.example.com,http://localhost:5173"
+const ALLOWED_ORIGINS = (((globalThis as any).Deno?.env.get("ALLOWED_ORIGINS")) || "")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+const buildCorsHeaders = (req: Request): HeadersInit => {
+  const origin = req.headers.get("Origin") || req.headers.get("origin");
+  const headers: Record<string, string> = {
+    // Only expose CORS when origin is allowed; also set Vary so caches differentiate.
+    "Vary": "Origin",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers":
+      "authorization, x-client-info, apikey, content-type",
+    // Cache preflight for a day.
+    "Access-Control-Max-Age": "86400",
+  };
+
+  if (origin && ALLOWED_ORIGINS.includes(origin)) {
+    headers["Access-Control-Allow-Origin"] = origin;
+  }
+
+  return headers;
 };
 
 interface ContactEmailRequest {
@@ -21,9 +41,9 @@ interface ContactEmailRequest {
 }
 
 const handler = async (req: Request): Promise<Response> => {
-  // Handle CORS preflight requests
+  // Handle CORS preflight requests safely
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { headers: buildCorsHeaders(req) });
   }
 
   try {
@@ -59,7 +79,7 @@ const handler = async (req: Request): Promise<Response> => {
       status: 200,
       headers: {
         "Content-Type": "application/json",
-        ...corsHeaders,
+        ...buildCorsHeaders(req),
       },
     });
   } catch (error: any) {
@@ -68,7 +88,7 @@ const handler = async (req: Request): Promise<Response> => {
       JSON.stringify({ error: error.message }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
+        headers: { "Content-Type": "application/json", ...buildCorsHeaders(req) },
       }
     );
   }
