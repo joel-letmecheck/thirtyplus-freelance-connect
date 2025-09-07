@@ -664,7 +664,8 @@ const SidebarMenuSkeleton = React.forwardRef<
         const random = array[0] / (maxUint + 1)
         return Math.floor(random * range) + min
       }
-      return Math.floor(Math.random() * range) + min
+      // Fallback without using Math.random(): choose a stable midpoint value.
+      return Math.floor((min + max) / 2)
     }
 
     setWidth(`${getSecureRandomInt(50, 90)}%`)
